@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cnbryaq3y7oec"]
+
+[ext_resource type="Texture2D" uid="uid://blmthw3ojrucj" path="res://assets/holding photos for stupid godot which needs it/download.png" id="1_je4r3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fv4s"]
+size = Vector2(139, 323)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1217859295]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1656548603]
+position = Vector2(1.0000076, 2)
+rotation = -1.5707964
+scale = Vector2(0.07001833, 0.051094744)
+texture = ExtResource("1_je4r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1548663750]
+position = Vector2(3.5, 1.5)
+shape = SubResource("RectangleShape2D_2fv4s")
