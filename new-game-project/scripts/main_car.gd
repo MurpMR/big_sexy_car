@@ -5,6 +5,8 @@ const SPEED = 1600.0
 const MAX_Y_SPEED = 800
 const JUMP_VELOCITY = -400.0
 var has_exploded = false
+@export var bottom: Marker2D
+@export var top: Marker2D
 
 
 func _physics_process(delta: float) -> void:
@@ -34,6 +36,12 @@ func _physics_process(delta: float) -> void:
 	
 
 	move_and_slide()
+	
+	if global_position.y > bottom.global_position.y - $CollisionShape2D.shape.size.x/2:
+		global_position.y =  bottom.global_position.y - $CollisionShape2D.shape.size.x/2
+		
+	if global_position.y < top.global_position.y + $CollisionShape2D.shape.size.x/2:
+		global_position.y =  top.global_position.y + $CollisionShape2D.shape.size.x/2
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)

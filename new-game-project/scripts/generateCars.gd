@@ -3,6 +3,7 @@ extends Node2D
 @export var car2: PackedScene
 @export var point: Marker2D
 
+
 #var[spawn_range]
 
 # Called when the node enters the scene tree for the first time.
