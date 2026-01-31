@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 1600.0
+const MAX_Y_SPEED = 800
 const JUMP_VELOCITY = -400.0
 var has_exploded = false
 
@@ -22,18 +23,30 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	var x_direction := Input.get_axis("ui_left", "ui_right")
+	var y_direction := Input.get_axis("ui_up", "ui_down")
+	velocity = Vector2(x_direction, y_direction)
+	velocity = velocity.normalized()
+	velocity *= SPEED
+	
+	if velocity.y < -MAX_Y_SPEED:
+		velocity.y = -MAX_Y_SPEED
+	
 
 	move_and_slide()
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
+		var f = randf()
+		if f < 0.025:
+			$Scream.play()
+		elif f < 0.05:
+			$Scream2.play()
+
+			
 		$AudioStreamPlayer2D.play()
 		$AnimatedSprite2D.play('die')
+			
 		has_exploded = true
 		#get_tree().paused=true
 		
