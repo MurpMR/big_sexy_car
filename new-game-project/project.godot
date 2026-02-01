@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="res://scenes/node_2d.tscn"
+run/main_scene="uid://bbvbfgsytow76"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [physics]
 

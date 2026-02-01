@@ -1,127 +1,23 @@
-[gd_scene load_steps=26 format=3 uid="uid://dnolqox1lu585"]
+[gd_scene load_steps=12 format=3 uid="uid://dnolqox1lu585"]
 
-[ext_resource type="Texture2D" uid="uid://ck8x6mb5mj2ak" path="res://assets/holding photos for stupid godot which needs it/Screenshot 2026-01-29 131202.png" id="1_xgy4n"]
 [ext_resource type="Script" uid="uid://dgpy2dni1xh70" path="res://scripts/main_car.gd" id="1_ygk3q"]
-[ext_resource type="Texture2D" uid="uid://dr4eowaw0sewv" path="res://assets/holding photos for stupid godot which needs it/istockphoto-955124060-612x612.jpg" id="3_1cujv"]
-[ext_resource type="Texture2D" uid="uid://cov45ybhi8eec" path="res://assets/holding photos for stupid godot which needs it/download.jpg" id="4_hcdgc"]
+[ext_resource type="Texture2D" uid="uid://crabgxhyd1jn0" path="res://assets/sprites/car.png" id="2_hla4y"]
+[ext_resource type="Texture2D" uid="uid://dr4eowaw0sewv" path="res://assets/sprites/istockphoto-955124060-612x612.jpg" id="3_1cujv"]
+[ext_resource type="Texture2D" uid="uid://cov45ybhi8eec" path="res://assets/sprites/download.jpg" id="4_hcdgc"]
 [ext_resource type="AudioStream" uid="uid://7jrkb57lx30d" path="res://assets/sfx/big-explosion-sfx-369789.mp3" id="5_hcdgc"]
 [ext_resource type="AudioStream" uid="uid://b6lrd3n6h4gnl" path="res://assets/sfx/little-girl-screaming-101185.mp3" id="6_67444"]
 [ext_resource type="AudioStream" uid="uid://b27ms70jvs05r" path="res://assets/sfx/young-girl-screaming-1-90519.mp3" id="7_hqxqt"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ygk3q"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(0, 0, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e6u7i"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(404, 161, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1cujv"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(0, 322, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcdgc"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(808, 161, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_67444"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(404, 322, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqxqt"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(808, 0, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hla4y"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(808, 322, 404, 161)
+[ext_resource type="AudioStream" uid="uid://catxvpkuqurqo" path="res://assets/sfx/car-crash-sound-effect-376874.mp3" id="8_hla4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfjar"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(404, 0, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjhc2"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(1212, 161, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvu63"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(404, 483, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gusrc"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(808, 483, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjdcu"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(1212, 322, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ptkw"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(1212, 0, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvjqi"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(0, 483, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5tl1d"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(0, 161, 404, 161)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvf45"]
-atlas = ExtResource("1_xgy4n")
-region = Rect2(1212, 483, 404, 161)
+atlas = ExtResource("2_hla4y")
+region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dmjkp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ygk3q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e6u7i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1cujv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hcdgc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_67444")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hqxqt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hla4y")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_cfjar")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mjhc2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvu63")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gusrc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wjdcu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ptkw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvjqi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5tl1d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvf45")
 }],
 "loop": true,
 "name": &"default",
@@ -149,29 +45,31 @@ motion_mode = 1
 script = ExtResource("1_ygk3q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(9.500005, 0.4999857)
+rotation = -1.5707964
+scale = Vector2(14.062502, 18.65625)
 sprite_frames = SubResource("SpriteFrames_dmjkp")
-animation = &"die"
 autoplay = "default"
-frame = 1
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w5gsc")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hcdgc")
-volume_db = 5.0
-max_distance = 2e+16
-attenuation = 2.8473918e-05
+volume_db = -5.0
+max_distance = 400000.0
 
 [node name="Scream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_67444")
 volume_db = -5.0
-max_distance = 200000000.0
-attenuation = 0.0005806687
+max_distance = 400000.0
 
 [node name="Scream2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_hqxqt")
 volume_db = -5.0
-max_distance = 200000000.0
-attenuation = 0.0005806687
+max_distance = 400000.0
+
+[node name="Crash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hla4y")
+max_distance = 400000.0

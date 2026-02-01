@@ -18,5 +18,6 @@ func _process(delta: float) -> void:
 func _on_timer_timeout():
 	var newCar = car2.instantiate()
 	newCar.global_position = Vector2(point.global_position.x+randi_range(1,1500), point.global_position.y)
+	newCar.speed = randf()*20+10
 	add_child(newCar)
 	

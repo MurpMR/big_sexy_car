@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr3mls3od2eqp"]
+
+[ext_resource type="AudioStream" uid="uid://dxsi7u0rjui7q" path="res://assets/music/ES_Face the Fear - Purple Dive.mp3" id="1_flxc7"]
+[ext_resource type="Script" uid="uid://caa8aanvihjw" path="res://scenes/radio2.gd" id="1_uf7ta"]
+[ext_resource type="AudioStream" uid="uid://bnbn711dc375s" path="res://assets/music/ES_Are You Happy Now_ - The Big Let Down.mp3" id="2_fkv45"]
+[ext_resource type="AudioStream" uid="uid://boah61df0tb17" path="res://assets/music/ES_UFO - Akibakid.mp3" id="3_run3b"]
+[ext_resource type="AudioStream" uid="uid://x5q1qafdn4nk" path="res://assets/music/once-in-paris-168895.mp3" id="4_lcdmm"]
+[ext_resource type="AudioStream" uid="uid://ckxg0ksbmwvr7" path="res://assets/sfx/radio-jingle-englisch-345129.mp3" id="5_mc70l"]
+[ext_resource type="AudioStream" uid="uid://ccfq0oac160vc" path="res://assets/sfx/zombie-news-am-radio-35057.mp3" id="6_a66yf"]
+
+[node name="Radio" type="Node2D"]
+script = ExtResource("1_uf7ta")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="Face the Fear" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("1_flxc7")
+volume_db = -10.0
+max_distance = 1e+15
+attenuation = 1e-05
+
+[node name="Are You Happy Now" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("2_fkv45")
+volume_db = -20.0
+max_distance = 1e+15
+attenuation = 1e-05
+
+[node name="UFO" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("3_run3b")
+volume_db = -10.0
+max_distance = 1e+15
+attenuation = 1e-05
+
+[node name="Once In Paris" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("4_lcdmm")
+volume_db = -10.0
+max_distance = 1e+15
+attenuation = 1e-05
+
+[node name="Alert" type="Node" parent="."]
+
+[node name="Best Radio" type="AudioStreamPlayer2D" parent="Alert"]
+stream = ExtResource("5_mc70l")
+volume_db = -5.0
+max_distance = 1e+15
+attenuation = 1e-05
+
+[node name="Zombie" type="AudioStreamPlayer2D" parent="Alert"]
+stream = ExtResource("6_a66yf")
+volume_db = 10.0
+max_distance = 1e+15
+attenuation = 1e-05
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+ignore_time_scale = true
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_right = 365.0
+offset_bottom = 156.0
+max_value = 40.0
+exp_edit = true
+tick_count = 100
+
+[connection signal="finished" from="Music/Face the Fear" to="." method="music_finished"]
+[connection signal="finished" from="Music/Are You Happy Now" to="." method="music_finished"]
+[connection signal="finished" from="Music/UFO" to="." method="music_finished"]
+[connection signal="finished" from="Music/Once In Paris" to="." method="music_finished"]
+[connection signal="finished" from="Alert/Best Radio" to="." method="alert_finished"]
+[connection signal="finished" from="Alert/Zombie" to="." method="alert_finished"]
+[connection signal="timeout" from="Timer" to="." method="play_alert"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

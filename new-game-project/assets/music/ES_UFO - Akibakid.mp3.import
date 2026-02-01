@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://boah61df0tb17"
+path="res://.godot/imported/ES_UFO - Akibakid.mp3-467ae3b77c207050b9dffc7444529d2a.mp3str"
+
+[deps]
+
+source_file="res://assets/music/ES_UFO - Akibakid.mp3"
+dest_files=["res://.godot/imported/ES_UFO - Akibakid.mp3-467ae3b77c207050b9dffc7444529d2a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

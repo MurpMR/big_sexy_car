@@ -1,18 +1,21 @@
-[gd_scene format=3 uid="uid://cnbryaq3y7oec"]
+[gd_scene load_steps=4 format=3 uid="uid://cnbryaq3y7oec"]
 
-[ext_resource type="Texture2D" uid="uid://blmthw3ojrucj" path="res://assets/holding photos for stupid godot which needs it/download.png" id="1_je4r3"]
+[ext_resource type="Script" uid="uid://chjthas4wwja1" path="res://scripts/car_2.gd" id="1_2fv4s"]
+[ext_resource type="Texture2D" uid="uid://crabgxhyd1jn0" path="res://assets/sprites/car.png" id="2_2fv4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fv4s"]
 size = Vector2(139, 323)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=1217859295]
+[node name="Car2" type="AnimatableBody2D"]
+script = ExtResource("1_2fv4s")
+speed = 20.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1656548603]
-position = Vector2(1.0000076, 2)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.719019, -0.2892605)
 rotation = -1.5707964
-scale = Vector2(0.07001833, 0.051094744)
-texture = ExtResource("1_je4r3")
+scale = Vector2(4.959155, 2.1559505)
+texture = ExtResource("2_2fv4s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1548663750]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 1.5)
 shape = SubResource("RectangleShape2D_2fv4s")

@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 1600.0
-const MAX_Y_SPEED = 800
-const JUMP_VELOCITY = -400.0
+const SPEED = 26.66
+const MAX_Y_SPEED = 13.33
+const JUMP_VELOCITY = -6.66
 var has_exploded = false
 @export var bottom: Marker2D
 @export var top: Marker2D
@@ -12,7 +12,7 @@ var has_exploded = false
 func _physics_process(delta: float) -> void:
 	if has_exploded:
 		velocity.x = 0
-		velocity.y = 2000
+		velocity.y = 50/delta
 		move_and_slide()
 		return
 	# Add the gravity.
@@ -30,9 +30,11 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(x_direction, y_direction)
 	velocity = velocity.normalized()
 	velocity *= SPEED
+	velocity *= 1/delta
+
 	
-	if velocity.y < -MAX_Y_SPEED:
-		velocity.y = -MAX_Y_SPEED
+	if velocity.y < -MAX_Y_SPEED/delta:
+		velocity.y = -MAX_Y_SPEED/delta
 	
 
 	move_and_slide()
@@ -52,7 +54,8 @@ func _physics_process(delta: float) -> void:
 			$Scream2.play()
 
 			
-		$AudioStreamPlayer2D.play()
+		$Explosion.play()
+		$Crash.play()
 		$AnimatedSprite2D.play('die')
 			
 		has_exploded = true
