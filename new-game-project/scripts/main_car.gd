@@ -9,6 +9,8 @@ var has_exploded = false
 @export var top: Marker2D
 var turnRight = false;
 var turnLeft = false;
+signal died()
+signal show()
 
 
 func _physics_process(delta: float) -> void:
@@ -72,11 +74,16 @@ func _physics_process(delta: float) -> void:
 			
 		$Explosion.play()
 		$Crash.play()
-		$AnimatedSprite2D.play('die')
+		#$AnimatedSprite2D.play('die')
+		show.emit()
 			
 		has_exploded = true
+		
+		$Timer.start()
 		#get_tree().paused=true
 		
 		
 		
-	
+
+func _on_game_over_finished() -> void:
+	died.emit()

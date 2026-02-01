@@ -1,16 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmqlwhekg3p6b"]
+[gd_scene load_steps=13 format=3 uid="uid://bmqlwhekg3p6b"]
 
 [ext_resource type="PackedScene" uid="uid://dnolqox1lu585" path="res://scenes/MainCar.tscn" id="1_6e84v"]
+[ext_resource type="Script" uid="uid://cctgvgpd1p763" path="res://node_2d.gd" id="1_hh0fu"]
 [ext_resource type="PackedScene" uid="uid://cnbryaq3y7oec" path="res://scenes/car2.tscn" id="2_4dvvg"]
+[ext_resource type="Texture2D" uid="uid://7gqqxbcumfeh" path="res://assets/sprites/color_panel.png" id="2_08kqv"]
 [ext_resource type="PackedScene" uid="uid://oa587vyyref3" path="res://scenes/road.tscn" id="3_j7wrs"]
 [ext_resource type="PackedScene" uid="uid://qdf4k5xw48e1" path="res://scenes/boundary.tscn" id="3_rnjyy"]
 [ext_resource type="PackedScene" uid="uid://cr3mls3od2eqp" path="res://scenes/radio.tscn" id="5_04qyp"]
 [ext_resource type="Texture2D" uid="uid://bsb536g5sgcvl" path="res://assets/sprites/outline_big.png" id="5_fws66"]
-[ext_resource type="Script" uid="uid://ck4m4w1cqtb8t" path="res://scenes/spawner.gd" id="7_fws66"]
+[ext_resource type="Script" uid="uid://ck4m4w1cqtb8t" path="res://scripts/spawner.gd" id="7_fws66"]
+[ext_resource type="Script" uid="uid://ctvtsfwa5byix" path="res://scenes/timer.gd" id="8_dubn7"]
+[ext_resource type="AudioStream" uid="uid://dwpop76d3wdxg" path="res://assets/sfx/game-start-6104.mp3" id="9_3m5ht"]
 
 [sub_resource type="Curve2D" id="Curve2D_rnjyy"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_hh0fu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1779.0001, 21.000002)
+scale = Vector2(5.232422, 12.097657)
+texture = ExtResource("2_08kqv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1640.2499, 28.999998)
+scale = Vector2(4.724611, 12.097657)
+texture = ExtResource("2_08kqv")
 
 [node name="Road" parent="." instance=ExtResource("3_j7wrs")]
 texture_filter = 1
@@ -52,8 +67,9 @@ position = Vector2(-995, 0)
 rotation = 3.1415927
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.929
+wait_time = 1.5
 autostart = true
+script = ExtResource("8_dubn7")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-1208, -1321)
@@ -67,4 +83,31 @@ position = Vector2(579, -1199)
 [node name="Radio" parent="." instance=ExtResource("5_04qyp")]
 position = Vector2(764, 645)
 
+[node name="Button Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_3m5ht")
+volume_db = 5.0
+autoplay = true
+
+[node name="Framerule" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+ignore_time_scale = true
+
+[node name="Second" type="Timer" parent="."]
+autostart = true
+ignore_time_scale = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1244.0
+offset_top = -1242.0
+offset_right = 1959.0
+offset_bottom = -751.0
+theme_override_font_sizes/font_size = 360
+text = "00"
+
+[connection signal="died" from="car" to="." method="_on_car_died"]
+[connection signal="show" from="car" to="." method="_on_car_show"]
+[connection signal="show" from="car" to="Viewer" method="_on_car_show"]
 [connection signal="timeout" from="Timer" to="Viewer" method="_on_timer_timeout"]
+[connection signal="timeout" from="Framerule" to="Timer" method="_on_framerule_timeout"]
+[connection signal="timeout" from="Second" to="." method="_on_second_timeout"]

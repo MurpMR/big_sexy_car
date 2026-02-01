@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dnolqox1lu585"]
+[gd_scene load_steps=30 format=3 uid="uid://dnolqox1lu585"]
 
 [ext_resource type="Script" uid="uid://dgpy2dni1xh70" path="res://scripts/main_car.gd" id="1_ygk3q"]
 [ext_resource type="Texture2D" uid="uid://crabgxhyd1jn0" path="res://assets/sprites/car.png" id="2_hla4y"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://b6lrd3n6h4gnl" path="res://assets/sfx/little-girl-screaming-101185.mp3" id="6_67444"]
 [ext_resource type="AudioStream" uid="uid://b27ms70jvs05r" path="res://assets/sfx/young-girl-screaming-1-90519.mp3" id="7_hqxqt"]
 [ext_resource type="AudioStream" uid="uid://catxvpkuqurqo" path="res://assets/sfx/car-crash-sound-effect-376874.mp3" id="8_hla4y"]
+[ext_resource type="AudioStream" uid="uid://bkkhorlbgjgnt" path="res://assets/sfx/game-over-deep-male-voice-clip-352695.mp3" id="9_cfjar"]
+[ext_resource type="Script" uid="uid://dcc8sq5m07j1t" path="res://scripts/game_over.gd" id="10_mjhc2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfjar"]
 atlas = ExtResource("2_hla4y")
@@ -168,7 +170,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5gsc"]
-size = Vector2(395, 156)
+size = Vector2(461.5, 215.00002)
 
 [node name="car" type="CharacterBody2D"]
 rotation = 1.5707964
@@ -178,9 +180,9 @@ script = ExtResource("1_ygk3q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(9.500005, 0.4999857)
+position = Vector2(13.249988, -5.791753e-07)
 rotation = -1.5707964
-scale = Vector2(14.062502, 18.65625)
+scale = Vector2(18.500002, 21.734377)
 sprite_frames = SubResource("SpriteFrames_dmjkp")
 autoplay = "default"
 speed_scale = 2.0
@@ -190,7 +192,7 @@ shape = SubResource("RectangleShape2D_w5gsc")
 
 [node name="Explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hcdgc")
-volume_db = -5.0
+volume_db = 5.0
 max_distance = 400000.0
 
 [node name="Scream" type="AudioStreamPlayer2D" parent="."]
@@ -206,3 +208,16 @@ max_distance = 400000.0
 [node name="Crash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_hla4y")
 max_distance = 400000.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Game Over" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_cfjar")
+volume_db = 5.0
+max_distance = 400000.0
+script = ExtResource("10_mjhc2")
+
+[connection signal="timeout" from="Timer" to="Game Over" method="_on_timer_timeout"]
+[connection signal="finished" from="Game Over" to="." method="_on_game_over_finished"]
