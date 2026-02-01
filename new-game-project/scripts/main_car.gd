@@ -7,6 +7,8 @@ const JUMP_VELOCITY = -6.66
 var has_exploded = false
 @export var bottom: Marker2D
 @export var top: Marker2D
+var turnRight = false;
+var turnLeft = false;
 
 
 func _physics_process(delta: float) -> void:
@@ -32,6 +34,20 @@ func _physics_process(delta: float) -> void:
 	velocity *= SPEED
 	velocity *= 1/delta
 
+	if Input.is_action_pressed("ui_right") and !turnLeft and !turnRight:
+		$AnimatedSprite2D.play("startRight");
+		turnRight = true;
+	elif Input.is_action_pressed("ui_left") and !turnRight and !turnLeft:
+		$AnimatedSprite2D.play("startLeft");
+		turnLeft = true;
+		
+			
+	if Input.is_action_just_released("ui_right") and turnRight:
+		$AnimatedSprite2D.play("endRight");
+		turnRight = false;
+	elif Input.is_action_just_released("ui_left") and turnLeft:
+		$AnimatedSprite2D.play("endLeft");
+		turnLeft = false;
 	
 	if velocity.y < -MAX_Y_SPEED/delta:
 		velocity.y = -MAX_Y_SPEED/delta

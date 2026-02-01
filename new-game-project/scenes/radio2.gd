@@ -1,7 +1,6 @@
 extends Node2D
 
 var music
-var music2
 var alerts
 var music_n
 var alerts_n
@@ -13,7 +12,6 @@ var volume
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	music    = $Music.get_children()
-	music2    = $Music.get_children()
 	alerts   = $Alert.get_children()
 	music_n  = $Music.get_child_count()
 	alerts_n = $Alert.get_child_count()
@@ -24,10 +22,16 @@ func _on_h_slider_value_changed(value):
 	volume = value
 	print(volume)
 	if(volume<20):
-		music[music_i].volume_db=-volume*2
+		music[music_i].volume_linear=(20-volume)/20
+		music[music_i+1].set_stream_paused(true)
+		music[music_i].set_stream_paused(false)
 	if(volume>20):
-		music[music_i].
-		music2[(music_i+1)%len(music)].volume_db=volume-40
+		music[music_i].set_stream_paused(true)
+		if(music[(music_i+1)%len(music)].has_stream_playback()):
+			music[(music_i+1)%len(music)].set_stream_paused(false)
+		else:
+			music[(music_i+1)%len(music)].play()
+		music[(music_i+1)%len(music)].volume_db=volume-40
 	
 
 	
