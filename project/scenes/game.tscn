@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cu0nhgxdagb4l"]
+
+[ext_resource type="Script" uid="uid://dg4uef54hlt86" path="res://scenes/game.gd" id="1_p57ef"]
+[ext_resource type="PackedScene" uid="uid://c6sul6ot2fmov" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://oa587vyyref3" path="res://scenes/road.tscn" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://fbp6j4ocruxu" path="res://assets/outline.png" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://br3hjy7aav3he" path="res://scenes/vehicle.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://c6wj3i8wqgemb" path="res://scripts/viewer.gd" id="4_iywne"]
+
+[node name="Game" type="Node2D" unique_id=1655457165 node_paths=PackedStringArray("point", "viewer", "testvar")]
+script = ExtResource("1_p57ef")
+veichle = ExtResource("3_lnu2h")
+point = NodePath("Marker2D")
+viewer = NodePath("Viewer")
+testvar = NodePath("Road2")
+
+[node name="Road1" parent="." unique_id=237105600 instance=ExtResource("1_yqjtg")]
+position = Vector2(26, -14)
+
+[node name="Road2" parent="." unique_id=925012602 instance=ExtResource("1_yqjtg")]
+position = Vector2(26, 66)
+
+[node name="CharacterBody2D" parent="." unique_id=352470449 instance=ExtResource("1_uwrxv")]
+position = Vector2(28, 27)
+
+[node name="Viewer" type="Sprite2D" parent="." unique_id=633371769 node_paths=PackedStringArray("point")]
+clip_children = 2
+texture = ExtResource("3_lbhrr")
+script = ExtResource("4_iywne")
+veichle = ExtResource("3_lnu2h")
+point = NodePath("../Marker2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1402813890]
+position = Vector2(29, 26)
+zoom = Vector2(5, 5)
+
+[node name="Timer" type="Timer" parent="." unique_id=343739807]
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=61716885]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="Viewer" method="_on_timer_timeout"]
